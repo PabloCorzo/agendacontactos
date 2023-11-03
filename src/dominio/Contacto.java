@@ -18,6 +18,13 @@ public class Contacto implements Serializable{
         this.nombre = "Predeterminado";
         this.num_tel = "";
     }
+    public boolean equals(Contacto c1, Contacto c2){
+        boolean p = false;
+        if(c1.getNombre().equalsIgnoreCase(c2.getNombre())){
+            p = true;
+        }
+        return p;
+    }
     public void setNombre(String nombre){
         this.nombre = nombre;
     }

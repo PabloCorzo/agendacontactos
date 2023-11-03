@@ -83,41 +83,43 @@ public class Interfaz {
         String nombre = split[2];
         String variable = split[3];
         boolean existe = false;
+        Contacto c1 = new Contacto(nombre, "");
         if(variable.matches("(.*)[0-9](.*)")){
-            Integer.parseInt(split[3]);
-            for(int i = 0; i < contactos.size();i++){
-                if(contactos.get(i).getNombre().equalsIgnoreCase(nombre)){
+            for(Contacto c2 : contactos){
+                if(c2.equals(c1)){
                     existe = true;
-                    contactos.get(i).setNum(split[3]);
+                    c2.setNum(variable);
                 }
             }
             if(existe == false){
                 System.out.println("Contacto no existe.");
             }
         }else{
-            for(int i = 0; i < contactos.size(); i ++ ){
-                if(contactos.get(i).getNombre().equalsIgnoreCase(nombre)){
-                    contactos.get(i).setNombre(split[3]);
+            for(Contacto c2 : contactos){
+                if(c2.equals(c1)){
                     existe = true;
+                    c2.setNombre(variable);
                 }
             }
             if(existe == false){
                 System.out.println("Contacto no existe");
             }
         }
-    }
+    }   
     
     public void delContacto(String input){
         String[] split = input.split(" ");
         System.out.println("borro " + input);
         String nombre = split[2];
+        Contacto c1 = new Contacto(nombre, "0");
+        boolean existe = false;
         if(contactos.size() == 0){System.out.println("La libreta esta vacia");}
-        for(int i = 0; i < contactos.size(); i++){
-            if(contactos.get(i).getNombre().equalsIgnoreCase(nombre)){
-                contactos.remove(contactos.get(i));
+        for(Contacto c2 : contactos){
+            if(c2.equals(c1)){
+                existe = true;
             }
-            else{System.out.println("No se ha encontrado el contacto");}
         }
+        if(existe == false){System.out.println("No se ha encontrado el contacto");}
     }
 
     public void list(){
